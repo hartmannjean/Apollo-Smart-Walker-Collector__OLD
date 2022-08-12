@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".CheckListActivity">
+
+    <Button
+        android:id="@+id/buttonIniciar"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:gravity="center"
+        android:onClick="abrirTerceiraTela"
+        android:text="Avançar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/switchLocalizacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:minHeight="55dp"
+        android:text="Localização"
+        app:layout_constraintStart_toStartOf="@+id/switchMagnetometro"
+        app:layout_constraintTop_toBottomOf="@+id/switchMagnetometro" />
+
+    <Switch
+        android:id="@+id/switchAcelerômetro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:minHeight="55dp"
+        android:text="Acelerômetro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/switchGiroscopio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:minHeight="55dp"
+        android:text="Giroscópio"
+        app:layout_constraintStart_toStartOf="@+id/switchAcelerômetro"
+        app:layout_constraintTop_toBottomOf="@+id/switchAcelerômetro" />
+
+    <Switch
+        android:id="@+id/switchMagnetometro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:minHeight="55dp"
+        android:text="Magnetômetro"
+        app:layout_constraintStart_toStartOf="@+id/switchGiroscopio"
+        app:layout_constraintTop_toBottomOf="@+id/switchGiroscopio" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
