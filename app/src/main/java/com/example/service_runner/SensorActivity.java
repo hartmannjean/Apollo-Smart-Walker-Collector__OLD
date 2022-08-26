@@ -1,5 +1,7 @@
 package com.example.service_runner;
 
+import static android.Manifest.permission.HIGH_SAMPLING_RATE_SENSORS;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +11,10 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -24,13 +29,13 @@ import java.sql.Timestamp;
 
 public class SensorActivity extends AppCompatActivity implements SensorEventListener, LocationTracker.LocationUpdateListener, LocationTracker {
 
-    private String nome, idade, altura, peso;
+    private String nome, idade, altura, peso, swtAceler, swtGyro, swtMagne, sAceler, sGyro, sMagne;;
     //declara variaveis
     private static final String TAG = "SENSORES";
     private SensorManager sensorManager;
     SensorManager multiSensor;
     Sensor sensores;
-    File csvFile;
+    File csvFile, csvPasta;
     OutputStreamWriter outputWriter;
     private boolean isRunning;
     private LocationTracker.LocationUpdateListener listener;
@@ -47,18 +52,28 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
         idade = intent.getStringExtra("idade");
         altura = intent.getStringExtra("altura");
         peso = intent.getStringExtra("peso");
+        swtAceler = intent.getStringExtra("swtAceler");
+        swtGyro = intent.getStringExtra("swtGyro");
+        swtMagne = intent.getStringExtra("swtMagne");
+        sAceler = intent.getStringExtra("sAceler");
+        sGyro = intent.getStringExtra("sGyro");
+        sMagne = intent.getStringExtra("sMagne");
+
 
         //Requisição de permissão para usuários (Escrita, localização e internet)
         if(Permissoes.validarPermissoes(new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.INTERNET,
-                Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                Manifest.permission.ACCESS_BACKGROUND_LOCATION, HIGH_SAMPLING_RATE_SENSORS
         }, this, 101)){
 
         }
+
         //instancia GPS
-        FallbackLocationTracker(this);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            FallbackLocationTracker(this);
+        }
     }
     public void iniciaSensor(View view){
         //inicializa sensores
@@ -66,21 +81,90 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
         Sensor msensor = multiSensor.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         Sensor asensor = multiSensor.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         Sensor gsensor = multiSensor.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-        //registra o listener dos sensores
-        if(multiSensor.registerListener(this, gsensor, SensorManager.SENSOR_DELAY_NORMAL)){
-            Toast.makeText(getApplicationContext(), "Gyroscópio OK", Toast.LENGTH_SHORT).show();
+        //registra o listener do sensor acelerometro
+        if(Boolean.valueOf(swtAceler) == true){
+            if(sAceler.equals("DELAY_NORMAL")){
+                Log.d(TAG, "DELAY_NORMALDELAY_NORMAL:  ");
+                if(multiSensor.registerListener(this, asensor, SensorManager.SENSOR_DELAY_NORMAL)){
+                    Toast.makeText(getApplicationContext(), "Acelerometer OK", Toast.LENGTH_SHORT).show();
+                }
+            }else if(sAceler.equals("DELAY_UI")){
+                if(multiSensor.registerListener(this, asensor, SensorManager.SENSOR_DELAY_UI)){
+                    Toast.makeText(getApplicationContext(), "Acelerometer OK", Toast.LENGTH_SHORT).show();
+                }
+            }else if(sAceler.equals("DELAY_GAME")){
+                if(multiSensor.registerListener(this, asensor, SensorManager.SENSOR_DELAY_GAME)){
+                    Toast.makeText(getApplicationContext(), "Acelerometer OK", Toast.LENGTH_SHORT).show();
+                }
+            }else if(sAceler.equals("DELAY_FASTEST")){
+                if(multiSensor.registerListener(this, asensor, SensorManager.SENSOR_DELAY_FASTEST)){
+                    Toast.makeText(getApplicationContext(), "Acelerometer OK", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
-        if(multiSensor.registerListener(this, asensor, SensorManager.SENSOR_DELAY_NORMAL)){
-            Toast.makeText(getApplicationContext(), "Acelerômetro OK", Toast.LENGTH_SHORT).show();
+        //registra o listener do sensor Gyroscopio
+        if(Boolean.valueOf(swtGyro) == true){
+            if(sGyro.equals("DELAY_NORMAL")){
+                if(multiSensor.registerListener(this, gsensor, SensorManager.SENSOR_DELAY_NORMAL)){
+                    Toast.makeText(getApplicationContext(), "Gyroscopio OK", Toast.LENGTH_SHORT).show();
+                }
+            }else if(sGyro.equals("DELAY_UI")){
+                if(multiSensor.registerListener(this, gsensor, SensorManager.SENSOR_DELAY_UI)){
+                    Toast.makeText(getApplicationContext(), "Gyroscopio OK", Toast.LENGTH_SHORT).show();
+                }
+            }else if(sGyro.equals("DELAY_GAME")){
+                if(multiSensor.registerListener(this, gsensor, SensorManager.SENSOR_DELAY_GAME)){
+                    Toast.makeText(getApplicationContext(), "Gyroscopio OK", Toast.LENGTH_SHORT).show();
+                }
+            }else if(sGyro.equals("DELAY_FASTEST")){
+                if(multiSensor.registerListener(this, gsensor, SensorManager.SENSOR_DELAY_FASTEST)){
+                    Toast.makeText(getApplicationContext(), "Gyroscopio OK", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
-        if(multiSensor.registerListener(this, msensor, SensorManager.SENSOR_DELAY_NORMAL)){
-            Toast.makeText(getApplicationContext(), "Magnetômetro OK", Toast.LENGTH_SHORT).show();
+        //registra o listener do sensor Magnetometro
+        if(Boolean.valueOf(swtMagne) == true){
+            if(sMagne.equals("DELAY_NORMAL")){
+                if(multiSensor.registerListener(this, msensor, SensorManager.SENSOR_DELAY_NORMAL)){
+                    Toast.makeText(getApplicationContext(), "Magnetometro OK", Toast.LENGTH_SHORT).show();
+                }
+            }else if(sMagne.equals("DELAY_UI")){
+                if(multiSensor.registerListener(this, msensor, SensorManager.SENSOR_DELAY_UI)){
+                    Toast.makeText(getApplicationContext(), "Magnetometro OK", Toast.LENGTH_SHORT).show();
+                }
+            }else if(sMagne.equals("DELAY_GAME")){
+                if(multiSensor.registerListener(this, msensor, SensorManager.SENSOR_DELAY_GAME)){
+                    Toast.makeText(getApplicationContext(), "Magnetometro OK", Toast.LENGTH_SHORT).show();
+                }
+            }else if(sMagne.equals("DELAY_FASTEST")){
+                if(multiSensor.registerListener(this, msensor, SensorManager.SENSOR_DELAY_FASTEST)){
+                    Toast.makeText(getApplicationContext(), "Magnetometro OK", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
+
         //cria o arquivo que será usado no metodo onSensorChanged para escrita dos dados
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        csvFile = new File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Export_"+timestamp+".csv");
+        //
+
+
+        File spqi;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            spqi = new File (this.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS) + "/SPQI");
+        } else {
+            spqi = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/SPQI");
+        }
+
+        if (!spqi.exists()) {
+            spqi.mkdirs();
+        }
+        csvFile = new File(spqi + "/SPQI_"+timestamp+".csv");
+        //csvFile.mkdir();
+        //File csvFile = new File(csvPasta, "SPQI_"+timestamp+".csv");
         try {
-            csvFile.createNewFile();
+            if (!csvFile.exists()) {
+                csvFile.createNewFile();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -94,7 +178,9 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
         outputWriter = new OutputStreamWriter(outputStream);
 
         //inicia gps
-        this.start();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            this.start();
+        }
     }
     public void paraSensor(View view){
         try{

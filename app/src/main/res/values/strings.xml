@@ -14,4 +14,22 @@
     <string name="title_activity_maps">MapsActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="spinner_acelerometro">
+        <item>DELAY_NORMAL</item>
+        <item>DELAY_UI</item>
+        <item>DELAY_GAME</item>
+        <item>DELAY_FASTEST</item>
+    </string-array>
+    <string-array name="spinner_gyroscopio">
+        <item>DELAY_NORMAL</item>
+        <item>DELAY_UI</item>
+        <item>DELAY_GAME</item>
+        <item>DELAY_FASTEST</item>
+    </string-array>
+    <string-array name="spinner_magnetometro">
+        <item>DELAY_NORMAL</item>
+        <item>DELAY_UI</item>
+        <item>DELAY_GAME</item>
+        <item>DELAY_FASTEST</item>
+    </string-array>
 </resources>
