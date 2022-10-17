@@ -31,8 +31,9 @@ Instituição: Universidade do Vale do Rio dos Sinos
 Data: 17/10/2022
 
 
+![image](https://user-images.githubusercontent.com/32403781/196269487-a85ecef1-e785-48e9-bde0-b9c1a0c76e2f.png)
 
-![Tela 1](https://user-images.githubusercontent.com/32403781/196268809-c0174c9a-5e31-4b61-90da-cf6d6c7a22f3.jpeg)
+
 
 
 
