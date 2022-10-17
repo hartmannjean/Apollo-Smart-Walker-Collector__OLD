@@ -8,7 +8,7 @@ Student: Jean Patrick Hartmann
 
 Advising Professor: Ph.D João Elison da Rosa Tavares
 
-Institution: Uniservidade do Vale do Rio dos Sinos
+Institution: Universidade do Vale do Rio dos Sinos
 
 Date: 2022-10-17
 
