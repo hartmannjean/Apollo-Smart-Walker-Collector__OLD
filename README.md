@@ -12,7 +12,10 @@ Institution: Uniservidade do Vale do Rio dos Sinos
 
 Date: 2022-10-17
 
+
+
 [Portuguese version]
+
 Aplicativo Android para coleta de dados de sensores do smartphone.
 Os dados coletados são: Acelerômetro, Giroscópio, Magnetômetro e GPS.
 O aplicativo gera um arquivo CSV para cada sensor.
