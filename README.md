@@ -56,7 +56,7 @@ System third screen - data collecting is not running
 ![image](https://user-images.githubusercontent.com/32403781/196270186-945df115-9df8-4ab3-80c2-8905b61490cf.png)
 
 
-System fourth screen
+System fourth screen - data collecting is running
 
 ![image](https://user-images.githubusercontent.com/32403781/196271480-269e2866-7598-418d-be55-e7afd628f068.png)
 
