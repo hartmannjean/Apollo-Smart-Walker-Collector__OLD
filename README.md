@@ -46,22 +46,17 @@ System first screen
 ![image](https://user-images.githubusercontent.com/32403781/196269794-cedc428c-749b-4e3c-a3c8-8eac62ef58d7.png)
 
 
-System second screen 
-
-![image](https://user-images.githubusercontent.com/32403781/196270055-e9ef3f51-62d7-4c1d-bf99-393eb561ba8f.png)
-
-
-System third screen - which sensor the system will activate
+System second screen - which sensor the system will activate
 
 ![image](https://user-images.githubusercontent.com/32403781/196271076-5db2e754-42d1-4d69-8124-7b6079c17661.png)
 
 
-System fourth screen - data collecting is not running
+System third screen - data collecting is not running
 
 ![image](https://user-images.githubusercontent.com/32403781/196270186-945df115-9df8-4ab3-80c2-8905b61490cf.png)
 
 
-System sixth screen
+System fourth screen
 
 ![image](https://user-images.githubusercontent.com/32403781/196271480-269e2866-7598-418d-be55-e7afd628f068.png)
 
