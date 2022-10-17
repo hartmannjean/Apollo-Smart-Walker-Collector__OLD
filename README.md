@@ -34,7 +34,7 @@ Project prototype 1
 
 ![image](https://user-images.githubusercontent.com/32403781/196273777-34287e0a-35b9-41d4-bc9e-040e116dc4c6.png)
 
-Project prototype 1
+Project prototype 2
 
 ![image](https://user-images.githubusercontent.com/32403781/196274561-4b78ad3f-7102-48d2-9b11-1a4300db7b63.png)
 
@@ -61,6 +61,12 @@ System fourth screen - data collecting is running
 ![image](https://user-images.githubusercontent.com/32403781/196271480-269e2866-7598-418d-be55-e7afd628f068.png)
 
 
+
+
+
+
+When using this resource, please cite:
+Hartmann, Jean; Tavares, João (2022). Dataset from: Apollo Smart Walker: Um Modelo Baseado em IoT e Inteligência Artificial para Monitoramento da Caminhada de Idosos que Utilizam Andadores.
 
 
 
