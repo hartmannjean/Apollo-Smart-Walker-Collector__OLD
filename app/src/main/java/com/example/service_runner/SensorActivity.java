@@ -89,6 +89,7 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
         btnFinalizar = (Button) findViewById(R.id.buttonFinalizar);
 
 
+
         //Requisição de permissão para usuários (Escrita, localização e internet)
         if(Permissoes.validarPermissoes(new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.ACCESS_FINE_LOCATION,
