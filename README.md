@@ -66,9 +66,8 @@ System fourth screen - data collecting is running
 
 
 When using this resource, please cite:
-Hartmann, Jean; Tavares, João (2022). 
 
-Apollo Smart Walker: Um Modelo Baseado em IoT e Inteligência Artificial para Monitoramento da Caminhada de Idosos que Utilizam Andadores.
+Hartmann, Jean; Tavares, João (2022). Apollo Smart Walker: Um Modelo Baseado em IoT e Inteligência Artificial para Monitoramento da Caminhada de Idosos que Utilizam Andadores.
 
 
 
